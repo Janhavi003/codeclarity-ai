@@ -1,0 +1,4 @@
+import { describe, expect, it } from "vitest";
+import { analysisSchema } from "@/types/analysis";
+
+describe("analysis schema",()=>{it("accepts a valid structured response",()=>{const result=analysisSchema.safeParse({summary:"Example",language:"python",qualityScore:82,keyFindings:[{type:"positive",text:"Readable"}],complexity:{time:"O(n)",space:"O(1)",explanation:"Linear scan",bestCase:"O(n)",averageCase:"O(n)",worstCase:"O(n)",confidence:"high"},issues:[],lineExplanations:[]});expect(result.success).toBe(true)});it("rejects an invalid score",()=>{expect(analysisSchema.safeParse({summary:"x",language:"python",qualityScore:140,keyFindings:[],complexity:{time:"O(n)",space:"O(1)",explanation:"x",bestCase:null,averageCase:null,worstCase:null,confidence:"high"},issues:[],lineExplanations:[]}).success).toBe(false)})});

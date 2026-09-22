@@ -1,0 +1,42 @@
+export const examples = [
+  {
+    id: "python-search",
+    title: "Inefficient Python search",
+    language: "python",
+    filename: "search_users.py",
+    description: "Nested scans over users and purchases create avoidable work.",
+    code: `def find_purchases(users, purchases):\n    results = []\n    for user in users:\n        for purchase in purchases:\n            if purchase["user_id"] == user["id"]:\n                results.append(purchase)\n    return results`,
+  },
+  {
+    id: "js-async",
+    title: "JavaScript async bug",
+    language: "javascript",
+    filename: "load-data.js",
+    description: "A missing await can leak a Promise into downstream logic.",
+    code: `async function loadProfile(id) {\n  const response = fetch("/api/users/" + id);\n  const data = await response.json();\n  return data.profile;\n}`,
+  },
+  {
+    id: "ts-types",
+    title: "TypeScript type issue",
+    language: "typescript",
+    filename: "format-user.ts",
+    description: "A loose shape hides an unsafe nested property access.",
+    code: `type User = { profile?: { name?: string } };\n\nfunction formatUser(user: User) {\n  return "User: " + user.profile.name.trim();\n}`,
+  },
+  {
+    id: "cpp-loop",
+    title: "C++ inefficient loop",
+    language: "cpp",
+    filename: "scores.cpp",
+    description: "Repeated container scans make the inner loop expensive.",
+    code: `int totalScore(const vector<int>& scores, const vector<int>& weights) {\n    int total = 0;\n    for (int score : scores) {\n        for (int weight : weights) {\n            total += score * weight;\n        }\n    }\n    return total;\n}`,
+  },
+  {
+    id: "python-quadratic",
+    title: "Python O(n²) duplicate check",
+    language: "python",
+    filename: "duplicates.py",
+    description: "Membership checks inside a loop make the simple implementation quadratic.",
+    code: `def has_duplicates(values):\n    for index, value in enumerate(values):\n        if value in values[index + 1:]:\n            return True\n    return False`,
+  },
+];
